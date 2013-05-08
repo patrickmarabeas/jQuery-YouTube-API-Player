@@ -3,11 +3,11 @@ jQuery-YouTube-API-Plugin
 
 jQuery plugin to insert a YouTube player on the page
 
-- YouTube API to load videos
-- Returns video data for display
-- Adds hash to URL for direct linking of videos
-- Builds select dropdown of videos in array and sanatises
-- controls to be added shortly
+YouTube API to load videos
+Returns video data for display
+Adds hash to URL for direct linking of videos
+Builds select dropdown of videos in array and sanatises
+controls to be added shortly
 
 
 	<div id="videoContainer">
@@ -21,6 +21,7 @@ jQuery plugin to insert a YouTube player on the page
 		</div>
 	
 	</div>
+	
 	<div id="youtubeCount"></div>
 	<div id="youtubeTitle"></div>
 	<div id="youtubeDescription"></div>
