@@ -13,6 +13,8 @@ Builds select dropdown of videos in array and sanatises
 
 controls to be added shortly
 
+HTML
+----
 
 	<div id="videoContainer">
 
@@ -30,8 +32,34 @@ controls to be added shortly
 	<div id="youtubeTitle"></div>
 	<div id="youtubeDescription"></div>
 	
+LESS
+----
+	
+	.video {
+		position: relative;
+
+		#aspect {
+			display: block;
+			width: 100%;
+			height: auto;
+			opacity: 0;
+		}
+		
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%; 
+			height: 100%;
+			
+			border: 0;
+		}
+		
+	}
+	
 
 Example video array
+-------------------
 
 	var testarr = [
 		{
@@ -68,6 +96,7 @@ Example video array
 	
 	
 Put the following in your footer (Don't place within $(document).ready)
+-----------------------------------------------------------------------
 	
 	var tag = document.createElement('script');
 	tag.src = "//www.youtube.com/iframe_api";
