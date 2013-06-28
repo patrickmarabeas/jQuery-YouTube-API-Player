@@ -1,9 +1,10 @@
 (function($) {
 
-	$.fn.youTubeAPI = function(config) {	
+	$.youTubeAPI = function(element, config) {	
 		
-		var $this = $(this);
+		var $this = $(element);
 		var $thisParent = $this.parent();
+		var plugin = this;
 	
 		var defaults = {
 			playerSettings: {
@@ -106,7 +107,7 @@
 								//basic functionality for select dropdown of videos
 								$("#series").change(function(){
 									var videoID = $(this).val();
-									loadVideo(videoID);
+									plugin.loadVideo(videoID);
 								});
 								
 							}
@@ -211,7 +212,7 @@
 			});
 		}
 
-		var loadVideo = function(videoID) {
+		plugin.loadVideo = function(videoID) {
 			if (player) {
 				var theIndex = -1;
 				//inspect array to find the index of the current video
@@ -250,6 +251,28 @@
 		
 		init(); //initialize
 		
+		
+		//IF NOT USING THE BUILDER:
+		//this should be able to be done outside the plugin via:
+		// $(".video").data('youTubeAPI').loadVideo( $(this).data('id') );
+		//but currently not working
+		$(".video").click(function(){
+			var videoID = $(this).data('id');
+			plugin.loadVideo(videoID);
+		});
+		
+		
 	}
+	
+	$.fn.youTubeAPI = function(config) {
+
+        return this.each(function() {
+            if (undefined == $(this).data('youTubeAPI')) {
+                var plugin = new $.youTubeAPI(this, config);
+                $(this).data('youTubeAPI', plugin);
+            }
+        });
+
+    }
 	
 })(jQuery)
