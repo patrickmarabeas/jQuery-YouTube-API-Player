@@ -1,6 +1,12 @@
 jQuery-YouTube-API-Plugin
 =========================
 
+Demo:
+http://patrickmarabeas.github.io/jQuery-YouTube-API-Plugin/
+
+Link to specific video in the series:
+http://patrickmarabeas.github.io/jQuery-YouTube-API-Plugin/#video-UrS9AVPUMFQ
+
 jQuery plugin to insert a YouTube player on the page
 
 YouTube API to load videos
