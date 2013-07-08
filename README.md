@@ -110,9 +110,9 @@ Put the following in your footer (Don't place within $(document).ready)
 					}
 				},
 				apiReturn: {
-					title: $(".youtubeTitle"),
-					description: $(".youtubeDescription"),
-					viewCount: $(".youtubeCount")
+					title: $("#youtubeTitle"),
+					description: $("#youtubeDescription"),
+					viewCount: $("#youtubeCount")
 				},
 				build: {
 					dropdown: true //the plugin will sanatise and build a select drop down of the array of videos
