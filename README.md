@@ -17,15 +17,12 @@ HTML
 ----
 
 	<div id="videoContainer">
-
-		<div class="video">
 		
+		<div id="yt">
 			<img id="aspect" alt="Aspect Ratio" src=""/>
-			
 			<div id="player"></div>
-			
 		</div>
-	
+		
 	</div>
 	
 	<div id="youtubeCount"></div>
@@ -35,7 +32,7 @@ HTML
 LESS
 ----
 	
-	.video {
+	#yt {
 		position: relative;
 
 		#aspect {
@@ -98,34 +95,47 @@ Example video array
 Put the following in your footer (Don't place within $(document).ready)
 -----------------------------------------------------------------------
 	
-	var tag = document.createElement('script');
-	tag.src = "//www.youtube.com/iframe_api";
-	var firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	var player;
-	
-	function onYouTubeIframeAPIReady() {
-	
-		$("#player").youTubeAPI({
-			playerSettings: {
-				playerVars: {
-					//see plugin for list of more parameters
-					'rel': 0 //hiding recomended videos at video completion
+	<script type="text/javascript">
+
+		function onYouTubeIframeAPIReady() {
+			
+			$("#yt").youTubeAPI({
+				videoArray: testarr,
+				hash: 'video-', //this is the hash prefix the plugin will look for to play a video from a direct link
+				pluginDir: 'http://mydomain.com/scripts/jquery-ytapi/', //the plugin dir
+				playerSettings: {
+					playerVars: {
+						//see plugin for list of more parameters
+						'rel': 0 //hiding recomended videos at video completion
+					}
+				},
+				apiReturn: {
+					title: $(".youtubeTitle"),
+					description: $(".youtubeDescription"),
+					viewCount: $(".youtubeCount")
+				},
+				build: {
+					dropdown: true //the plugin will sanatise and build a select drop down of the array of videos
 				}
-			},
-			apiReturn: {
-				title: $(".youtubeTitle"),
-				description: $(".youtubeDescription"),
-				viewCount: $(".youtubeCount")
-			},
-			build: {
-				dropdown: true //the plugin will sanatise and build a select drop down of the array of videos
-			},
-			videoArray: testarr,
-			hash: 'video-', //this is the hash prefix the plugin will look for to play a video from a direct link
-			pluginDir: 'http://mydomain.com/scripts/jquery-ytapi/', //the plugin dir
-			aspectImg: $("#aspect"),
-			selectDD: $("#series")
-		});
+			});
+			
+		}
 		
-	}
+	</script>
+
+
+Load videos manually
+--------------------
+
+If you wish to build your own list of videos from the array, you can access the loadVideo() function as such:
+	
+	$("#yt").data('youTubeAPI').loadVideo(videoID);
+	
+An example of usage:
+	
+	<div class="video" data-id="tHeV1d30Id">
+	
+	$(".video").on('click', function(){		
+		var videoID = $(this).data('id');
+		$("#yt").data('youTubeAPI').loadVideo(videoID);
+	});
