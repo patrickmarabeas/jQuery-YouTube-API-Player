@@ -9,7 +9,7 @@ Returns video data for display
 
 Adds hash to URL for direct linking of videos
 
-Builds select dropdown of videos in array and sanatises
+Builds select dropdown of videos in array and sanatises (requires https://github.com/jaubourg/jquery-jsonp)
 
 controls to be added shortly
 
